@@ -4,6 +4,7 @@ langchain_openai
 openai
 chromadb
 PyPDF2
+pycryptodome
 streamlit
 tiktoken
 faiss-cpu
