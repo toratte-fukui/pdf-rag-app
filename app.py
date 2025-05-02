@@ -5,7 +5,7 @@ import streamlit as st
 from langchain.chains import RetrievalQA
 from langchain.schema.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 from langchain_core.vectorstores import VectorStoreRetriever
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from PyPDF2 import PdfReader
@@ -65,7 +65,7 @@ if uploaded_file and query:
     embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
     if "vectordb" in st.session_state:
         del st.session_state["vectordb"]
-    st.session_state["vectordb"] = Chroma.from_documents(docs, embeddings)
+    st.session_state["vectordb"] = FAISS.from_documents(docs, embeddings)
 
     # ③ 質問処理
     retriever: VectorStoreRetriever = st.session_state["vectordb"].as_retriever(

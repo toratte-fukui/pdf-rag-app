@@ -6,3 +6,4 @@ chromadb
 PyPDF2
 streamlit
 tiktoken
+faiss-cpu
